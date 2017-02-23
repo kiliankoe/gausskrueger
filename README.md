@@ -45,3 +45,10 @@ Package.swift
 ```swift
 .Package(url: "https://github.com/kiliankoe/gausskrueger", majorVersion: 0)
 ```
+
+
+
+## Credits
+
+This is basically a clone of [juliuste/gauss-krueger](https://github.com/juliuste/gauss-krueger) (which in turn seems to be from [here](http://www.heimeier-spielmann.de/kt/javascripts.html)) with a few modifications to make it valid Swift. 
+
