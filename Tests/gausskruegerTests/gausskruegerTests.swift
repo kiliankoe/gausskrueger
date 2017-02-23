@@ -1,45 +1,21 @@
-/**
- *  gausskrueger
- *
- *  Copyright (c) 2017 Kilian Koeltzsch. Licensed under the MIT license, as follows:
- *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
- *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
- *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
- */
-
 import Foundation
 import XCTest
 import gausskrueger
 
 class gausskruegerTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        //// XCTAssertEqual(gausskrueger().text, "Hello, World!")
-    }
-}
+    func testGKtoWGS() {
+        let gk = GK(x: 4591270, y: 5819620)
+        guard let wgs = gk.toWGS else { XCTFail(); return }
 
-#if os(Linux)
-extension gausskruegerTests {
-    static var allTests : [(String, (gausskruegerTests) -> () throws -> Void)] {
-        return [
-            ("testExample", testExample),
-        ]
+        XCTAssertEqual(wgs.lat, 52.502133988116455)
+        XCTAssertEqual(wgs.lon, 13.342517405215336)
+    }
+
+    func testWGStoGK() {
+        let wgs = WGS(lat: 52.502133988116455, lon: 13.342517405215336)
+        guard let gk = wgs.toGK else { XCTFail(); return }
+
+        XCTAssertEqual(gk.x, 4591270)
+        XCTAssertEqual(gk.y, 5819620)
     }
 }
-#endif
