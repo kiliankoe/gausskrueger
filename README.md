@@ -1,5 +1,9 @@
 # 🌐 gausskrueger
 
+[![Travis](https://img.shields.io/travis/kiliankoe/gausskrueger.svg?style=flat-square)](https://travis-ci.org/kiliankoe/gausskrueger)
+[![Version](https://img.shields.io/cocoapods/v/gausskrueger.svg?style=flat-square)](http://cocoapods.org/pods/gausskrueger)
+[![Codecov](https://img.shields.io/codecov/c/github/kiliankoe/gausskrueger.svg?style=flat-square)](https://codecov.io/gh/kiliankoe/gausskrueger)
+
 Swift library for converting GK4-coordinates into WGS84 latitide and longitude, and vice versa.
 
 
