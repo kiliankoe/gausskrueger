@@ -43,5 +43,5 @@ github "kiliankoe/gausskrueger"
 Package.swift
 
 ```swift
-.Package(url: "https://github.com/kiliankoe/gausskrueger", majorVersion: 2)
+.Package(url: "https://github.com/kiliankoe/gausskrueger", majorVersion: 0)
 ```
