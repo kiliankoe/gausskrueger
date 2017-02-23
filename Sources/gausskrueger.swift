@@ -9,7 +9,7 @@ public struct GK {
         self.y = y
     }
 
-    public var toWGS: WGS? {
+    public var asWGS: WGS? {
         return gk2wgs(gk: self)
     }
 }
@@ -23,7 +23,7 @@ public struct WGS {
         self.lon = lon
     }
 
-    public var toGK: GK? {
+    public var asGK: GK? {
         return wgs2gk(wgs: self)
     }
 }
@@ -31,7 +31,7 @@ public struct WGS {
 import CoreLocation
 
 extension CLLocationCoordinate2D {
-    public var toGK: GK? {
+    public var asGK: GK? {
         let wgs = WGS(lat: self.latitude, lon: self.longitude)
         return wgs2gk(wgs: wgs)
     }

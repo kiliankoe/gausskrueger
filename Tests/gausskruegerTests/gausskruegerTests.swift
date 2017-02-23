@@ -5,7 +5,7 @@ import gausskrueger
 class gausskruegerTests: XCTestCase {
     func testGKtoWGS() {
         let gk = GK(x: 4591270, y: 5819620)
-        guard let wgs = gk.toWGS else { XCTFail(); return }
+        guard let wgs = gk.asWGS else { XCTFail(); return }
 
         XCTAssertEqual(wgs.lat, 52.502133988116455)
         XCTAssertEqual(wgs.lon, 13.342517405215336)
@@ -13,7 +13,7 @@ class gausskruegerTests: XCTestCase {
 
     func testWGStoGK() {
         let wgs = WGS(lat: 52.502133988116455, lon: 13.342517405215336)
-        guard let gk = wgs.toGK else { XCTFail(); return }
+        guard let gk = wgs.asGK else { XCTFail(); return }
 
         XCTAssertEqual(gk.x, 4591270)
         XCTAssertEqual(gk.y, 5819620)
