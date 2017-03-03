@@ -28,21 +28,14 @@ let wgs = gk.asWGS
 
 gausskrueger is available through Cocoapods, Carthage/Punic and Swift Package Manager, take your pick.
 
-Copypasta for your Podfile:
-
-```ruby
-pod 'gausskrueger'
-```
-
-Cartfile:
-
-```
-github "kiliankoe/gausskrueger"
-```
-
-Package.swift
-
 ```swift
+// Cocoapods
+pod 'gausskrueger'
+
+// Carthage
+github "kiliankoe/gausskrueger"
+
+// Swift Package Manager
 .Package(url: "https://github.com/kiliankoe/gausskrueger", majorVersion: 0)
 ```
 
