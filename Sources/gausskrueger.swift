@@ -28,15 +28,6 @@ public struct WGS {
     }
 }
 
-import CoreLocation
-
-extension CLLocationCoordinate2D {
-    public var asGK: GK? {
-        let wgs = WGS(lat: self.latitude, lon: self.longitude)
-        return wgs2gk(wgs: wgs)
-    }
-}
-
 // This code is copied directly from https://github.com/juliuste/gauss-krueger
 // Only minimal changes were made to ensure type-safety and usage of correct math APIs from Swift
 
