@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "gausskrueger"
-  s.version     = "0.2.1"
+  s.version     = "0.2.2"
   s.summary     = "Convert GK4 coordinates to WGS84, and vice versa"
   s.description = <<-DESC
     Swift library for converting GK4-coordinates into WGS84 latitide and longitude, and vice versa.
