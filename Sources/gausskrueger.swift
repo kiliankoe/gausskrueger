@@ -1,6 +1,6 @@
 import Foundation
 
-public struct GK {
+public struct GKCoordinate {
     public let x: Double
     public let y: Double
 
@@ -9,12 +9,12 @@ public struct GK {
         self.y = y
     }
 
-    public var asWGS: WGS? {
+    public var asWGS: WGSCoordinate? {
         return gk2wgs(gk: self)
     }
 }
 
-public struct WGS {
+public struct WGSCoordinate {
     public let lat: Double
     public let lon: Double
 
@@ -23,7 +23,7 @@ public struct WGS {
         self.lon = lon
     }
 
-    public var asGK: GK? {
+    public var asGK: GKCoordinate? {
         return wgs2gk(wgs: self)
     }
 }
@@ -43,12 +43,12 @@ public struct WGS {
  in all copies or substantial portions of the Software.
  */
 
-public func gk2wgs(gk: GK) -> WGS? {
+public func gk2wgs(gk: GKCoordinate) -> WGSCoordinate? {
     guard let pot = gk2pot(gk: gk) else { return nil }
     return pot2wgs(pot: pot)
 }
 
-public func wgs2gk(wgs: WGS) -> GK? {
+public func wgs2gk(wgs: WGSCoordinate) -> GKCoordinate? {
     guard let pot = wgs2pot(wgs: wgs) else { return nil }
     return pot2gk(pot: pot)
 }
@@ -57,7 +57,7 @@ public func wgs2gk(wgs: WGS) -> GK? {
 /// um. Rechtswert rw und Hochwert hw müssen gegeben sein.
 /// Berechnet werden geographische Länge lp und Breite bp
 /// im Potsdam Datum.
-func gk2pot(gk: GK) -> GK? {
+func gk2pot(gk: GKCoordinate) -> GKCoordinate? {
     let rw = gk.x
     let hw = gk.y
 
@@ -133,7 +133,7 @@ func gk2pot(gk: GK) -> GK? {
         return nil
     }
 
-    return GK(x: lp, y: bp)
+    return GKCoordinate(x: lp, y: bp)
 }
 
 /// Die Funktion verschiebt das Kartenbezugssystem (map datum) vom in
@@ -144,7 +144,7 @@ func gk2pot(gk: GK) -> GK? {
 /// Breite bw (in grad) auf dem WGS84-Ellipsoid.
 /// Bei der Transformation werden die Ellipsoidachsen parallel
 /// verschoben um dx = 587 m, dy = 16 m und dz = 393 m.
-func pot2wgs(pot: GK) -> WGS {
+func pot2wgs(pot: GKCoordinate) -> WGSCoordinate {
     let lp = pot.x
     let bp = pot.y
 
@@ -200,7 +200,7 @@ func pot2wgs(pot: GK) -> WGS {
         l2 = (180/pi) * atan(y/x) - 180
     }
 
-    return WGS(lat: b2, lon: l2)
+    return WGSCoordinate(lat: b2, lon: l2)
 }
 
 /// Die Funktion verschiebt das Kartenbezugssystem (map datum) vom
@@ -212,7 +212,7 @@ func pot2wgs(pot: GK) -> WGS {
 /// Bei der Transformation werden die Ellipsoidachsen parallel
 /// verschoben um dx = -587 m, dy = -16 m und dz = -393 m.
 /// Fehler berichten Sie bitte an Helmut.Heimeier@t-online.de
-func wgs2pot(wgs: WGS) -> GK? {
+func wgs2pot(wgs: WGSCoordinate) -> GKCoordinate? {
     let lw = wgs.lon
     let bw = wgs.lat
 
@@ -271,14 +271,14 @@ func wgs2pot(wgs: WGS) -> GK? {
         return nil
     }
 
-    return GK(x: l2, y: b2)
+    return GKCoordinate(x: l2, y: b2)
 }
 
 /// Die Funktion wandelt geographische Koordinaten in GK Koordinaten
 /// um. Geographische Länge lp und Breite bp müssen im Potsdam Datum
 /// gegeben sein. Berechnet werden Rechtswert rw und Hochwert hw.
 /// Fehler berichten Sie bitte an Helmut.Heimeier@t-online.de
-func pot2gk(pot: GK) -> GK? {
+func pot2gk(pot: GKCoordinate) -> GKCoordinate? {
     let lp = pot.x
     let bp = pot.y
 
@@ -356,5 +356,5 @@ func pot2gk(pot: GK) -> GK? {
         rw = Double(Int(rw + 1))
     }
 
-    return GK(x: rw, y: hw)
+    return GKCoordinate(x: rw, y: hw)
 }
