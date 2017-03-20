@@ -1,6 +1,11 @@
 import Foundation
 
-public struct GKCoordinate {
+public protocol Coordinate {
+    var asGK: GKCoordinate? { get }
+    var asWGS: WGSCoordinate? { get }
+}
+
+public struct GKCoordinate: Coordinate {
     public let x: Double
     public let y: Double
 
@@ -12,9 +17,13 @@ public struct GKCoordinate {
     public var asWGS: WGSCoordinate? {
         return gk2wgs(gk: self)
     }
+
+    public var asGK: GKCoordinate? {
+        return self
+    }
 }
 
-public struct WGSCoordinate {
+public struct WGSCoordinate: Coordinate {
     public let lat: Double
     public let lon: Double
 
@@ -25,6 +34,10 @@ public struct WGSCoordinate {
 
     public var asGK: GKCoordinate? {
         return wgs2gk(wgs: self)
+    }
+
+    public var asWGS: WGSCoordinate? {
+        return self
     }
 }
 
