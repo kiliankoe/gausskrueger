@@ -24,12 +24,12 @@ public struct GKCoordinate: Coordinate {
 }
 
 public struct WGSCoordinate: Coordinate {
-    public let lat: Double
-    public let lon: Double
+    public let latitude: Double
+    public let longitude: Double
 
-    public init(lat: Double, lon: Double) {
-        self.lat = lat
-        self.lon = lon
+    public init(latitude: Double, longitude: Double) {
+        self.latitude = latitude
+        self.longitude = longitude
     }
 
     public var asGK: GKCoordinate? {
@@ -213,7 +213,7 @@ func pot2wgs(pot: GKCoordinate) -> WGSCoordinate {
         l2 = (180/pi) * atan(y/x) - 180
     }
 
-    return WGSCoordinate(lat: b2, lon: l2)
+    return WGSCoordinate(latitude: b2, longitude: l2)
 }
 
 /// Die Funktion verschiebt das Kartenbezugssystem (map datum) vom
@@ -226,8 +226,8 @@ func pot2wgs(pot: GKCoordinate) -> WGSCoordinate {
 /// verschoben um dx = -587 m, dy = -16 m und dz = -393 m.
 /// Fehler berichten Sie bitte an Helmut.Heimeier@t-online.de
 func wgs2pot(wgs: WGSCoordinate) -> GKCoordinate? {
-    let lw = wgs.lon
-    let bw = wgs.lat
+    let lw = wgs.longitude
+    let bw = wgs.latitude
 
     // Quellsystem WGS 84 Datum
     // Große Halbachse a und Abplattung fq
