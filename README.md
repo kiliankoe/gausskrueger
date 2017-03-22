@@ -13,12 +13,12 @@ Swift library for converting GK4-coordinates into WGS84 latitude and longitude, 
 ```swift
 import gausskrueger
 
-let coord = CLLocationCoordinate2D(latitude: 52.502133988116455, longitude: 13.342517405215336)
+let coord = WGSCoordinate(latitude: 52.502133988116455, longitude: 13.342517405215336)
 let gk = coord.asGK
 
 // ---
 
-let gk = GK(x: 4591270, y: 5819620)
+let gk = GKCoordinate(x: 4591270, y: 5819620)
 let wgs = gk.asWGS
 ```
 
