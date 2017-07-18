@@ -1,8 +1,8 @@
 import Foundation
 import XCTest
-import gausskrueger
+import GaussKrueger
 
-class gausskruegerTests: XCTestCase {
+class GaussKruegerTests: XCTestCase {
     func testGKtoWGS() {
         let gk = GKCoordinate(x: 4591270, y: 5819620)
         guard let wgs = gk.asWGS else { XCTFail(); return }

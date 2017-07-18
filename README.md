@@ -1,4 +1,4 @@
-# 🌐 gausskrueger
+# 🌐 GaussKrueger
 
 [![Travis](https://img.shields.io/travis/kiliankoe/gausskrueger.svg?style=flat-square)](https://travis-ci.org/kiliankoe/gausskrueger)
 [![Version](https://img.shields.io/cocoapods/v/gausskrueger.svg?style=flat-square)](http://cocoapods.org/pods/gausskrueger)
@@ -11,7 +11,7 @@ Swift library for converting GK4-coordinates into WGS84 latitude and longitude, 
 ## Usage
 
 ```swift
-import gausskrueger
+import GaussKrueger
 
 let coord = WGSCoordinate(latitude: 52.502133988116455, longitude: 13.342517405215336)
 let gk = coord.asGK
